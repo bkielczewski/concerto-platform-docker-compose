@@ -1,0 +1,22 @@
+parameters:
+  administration:
+    exposed:
+      session_limit: 0 #0 for none
+      api_enabled: false
+      session_limit_overridable: false
+      api_enabled_overridable: false
+    internal:
+      online: true
+      global_feed: https://raw.githubusercontent.com/campsych/concerto-platform/admin_tab/src/Concerto/PanelBundle/Resources/public/feeds/global.yml
+      local_feed: null
+      git_branch: admin_tab
+      backup_directory: /usr/src/concerto_backup/ #must be above Concerto Platform root directory
+      upgrade_connection: local #only works with MySQL driver
+      web_user: www-data
+      web_group: www-data
+      r_exec_path: R
+      r_lib_path: /usr/src/concerto/R/libs
+      scheduled_tasks: false
+      editable_starter_content: false
+      session_files_expiration: 7 #days
+      session_count_idle_limit: 1800 #secs

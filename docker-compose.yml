@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  concerto:
+    build: concerto
+    image: campsych/concerto-platform:checkpointing
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./concerto/config/parameters.yml:/usr/src/concerto/app/config/parameters.yml
+      - ./concerto/config/parameters_administration.yml:/usr/src/concerto/app/config/parameters_administration.yml
+      - ./concerto/config/parameters_test_runner.yml:/usr/src/concerto/app/config/parameters_test_runner.yml
+      - ./concerto/config/parameters_uio.yml:/usr/src/concerto/app/config/parameters_uio.yml
+      - ./logs/nginx:/var/log/nginx
+      - ./logs/app:/usr/src/concerto/var/logs
+      - ./shared/sessions:/usr/src/concerto/src/Concerto/TestBundle/Resources/sessions
+      - ./shared/files:/usr/src/concerto/src/Concerto/PanelBundle/Resources/public/files
+      - ./R:/usr/src/concerto/R
+      - ./rcache:/usr/src/concerto/src/Concerto/PanelBundle/Resources/public/rcache
+      - ./php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
